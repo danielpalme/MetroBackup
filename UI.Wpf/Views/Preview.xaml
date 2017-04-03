@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="Palmmedia.BackUp.UI.Wpf.Views.Preview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:resx="clr-namespace:Palmmedia.BackUp.UI.Wpf.Properties"
+             xmlns:shrdresx="clr-namespace:Palmmedia.BackUp.SharedResources;assembly=Palmmedia.BackUp.SharedResources"
+             xmlns:ctrl="clr-namespace:Palmmedia.BackUp.UI.Wpf.Controls" 
+             mc:Ignorable="d" 
+            d:DesignHeight="520" d:DesignWidth="780">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="48"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="215"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ListBox Margin="0,0,0,20" Grid.Row="0" Grid.Column="0" BorderBrush="{x:Null}" ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Path=SyncTasks, Mode=OneWay}" SelectedValue="{Binding Path=SelectectedSyncTask}" HorizontalContentAlignment="Stretch" Style="{StaticResource SelectableListBox}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ctrl:TasklistSmall />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TabControl Margin="3,0,0,0" Grid.Row="0" Grid.Column="2" BorderThickness="0" SelectedIndex="{Binding SelectedFileList}" Style="{StaticResource FileListTabControl}">
+            <TabItem >
+                <TabItem.Header>
+                    <Grid>
+                        <Path Data="{StaticResource CopyPathData}" />
+                        <Label Content="{x:Static resx:Common.Files}" />
+                    </Grid>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem >
+                <TabItem.Header>
+                    <Grid>
+                        <Path Data="{StaticResource DeletePathData}" />
+                        <Label Content="{x:Static resx:Common.Files}" />
+                    </Grid>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem >
+                <TabItem.Header>
+                    <Grid>
+                        <Path Data="{StaticResource CopyPathData}" />
+                        <Label Content="{x:Static resx:Common.Directories}"  />
+                    </Grid>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem >
+                <TabItem.Header>
+                    <Grid>
+                        <Path Data="{StaticResource DeletePathData}" />
+                        <Label Content="{x:Static resx:Common.Directories}" />
+                    </Grid>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+        <ListView Margin="0,35,0,20" Grid.Row="0" Grid.Column="2" ItemsSource="{Binding Path=SelectedFiles, Mode=OneWay}" HorizontalContentAlignment="Stretch">
+            <ListView.Resources>
+                <DataTemplate x:Key="ActiveCellTemplate">
+                    <CheckBox IsChecked="{Binding Path=IsActive}"/>
+                </DataTemplate>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static resx:Preview.Active}" CellTemplate="{StaticResource ActiveCellTemplate}"/>
+                    <GridViewColumn Header="{x:Static shrdresx:Common.ReferenceDirectory}"  DisplayMemberBinding="{Binding Path=ReferencePath, Mode=OneWay}" Width="{Binding ColumnWidth}"/>
+                    <GridViewColumn Header="{x:Static shrdresx:Common.TargetDirectory}" DisplayMemberBinding="{Binding Path=TargetPath, Mode=OneWay}" Width="{Binding ColumnWidth}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+            <Button Command="{Binding Path=SelectAllCommand, Mode=OneWay}" Style="{StaticResource TinyToolbarButton}">
+                <Grid>
+                    <Path Data="{StaticResource PlusPathData}"  />
+                    <Label Content="{x:Static resx:Preview.SelectAll}" />
+                </Grid>
+            </Button>
+            <Button Command="{Binding Path=UnselectAllCommand, Mode=OneWay}" Style="{StaticResource TinyToolbarButton}">
+                <Grid>
+                    <Path Data="{StaticResource MinusPathData}" />
+                    <Label Content="{x:Static resx:Preview.UnselectAll}" />
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal">
+                <Button HorizontalAlignment="Left" Command="{Binding Path=SynchronizeCommand, Mode=OneWay}" VerticalAlignment="Bottom" Style="{StaticResource ToolbarButton}">
+                    <Grid>
+                        <Path Data="{StaticResource SyncPathData}" />
+                        <Label Content="{x:Static resx:Common.Synchronize}" />
+                    </Grid>
+                </Button>
+                <Button HorizontalAlignment="Left" Command="{Binding Path=CancelCommand, Mode=OneWay}" VerticalAlignment="Bottom" Style="{StaticResource ToolbarButton}">
+                    <Grid>
+                        <Path Data="{StaticResource CancelPathData}" />
+                        <Label Content="{x:Static resx:Common.Cancel}" />
+                    </Grid>
+                </Button>
+            </StackPanel>
+    </Grid>
+</UserControl>

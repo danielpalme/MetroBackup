@@ -1,0 +1,172 @@
+﻿<Window x:Class="Palmmedia.BackUp.UI.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:Palmmedia.BackUp.UI.Wpf.Views" 
+        xmlns:vm="clr-namespace:Palmmedia.BackUp.UI.Wpf.ViewModels" 
+        xmlns:resx="clr-namespace:Palmmedia.BackUp.UI.Wpf.Properties"
+        xmlns:ctrl="clr-namespace:Palmmedia.BackUp.UI.Wpf.Controls" 
+        FontFamily="{StaticResource PrimaryFontFamily}"
+        FontSize="13"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResize"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"  
+        MouseDoubleClick="Thumb_MouseDoubleClick" 
+        Title="{x:Static resx:MainWindow.Title}" Height="600" Width="800" MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="{StaticResource EmphasisBrush}">
+            <Path Data="{StaticResource SyncPathData}" Margin="9,3,0,0" Width="16" Height="16" Stroke="#FFFFFF" HorizontalAlignment="Left" StrokeThickness="1" Stretch="Uniform" />
+            <Label FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFFFF" Content="{x:Static resx:MainWindow.Title}" Margin="26,5,0,0" />
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="0">
+                <Button x:Name="MinimizeButton" Width="20" Height="30" Click="MinimizeButton_Click" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource OpacityButton}" TargetType="Button">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Source={x:Static Application.Current}, Path=MainWindow.WindowState}" Value="Minimized">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Canvas Width="12" Height="10">
+                        <Rectangle Canvas.Top="6" Width="10" Height="3" Stroke="White" StrokeThickness="2" />
+                    </Canvas>
+                </Button>
+
+                <Button x:Name="MaximizeButton" Width="20" Height="30" Click="MaximizeButton_Click" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource OpacityButton}" TargetType="Button">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Source={x:Static Application.Current}, Path=MainWindow.WindowState}" Value="Maximized">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Canvas Width="12" Height="10">
+                        <Rectangle Canvas.Top="1" Width="11" Height="9" Stroke="White" StrokeThickness="2"  />
+                    </Canvas>
+                </Button>
+
+                <Button x:Name="RestoreButton" Width="20" Height="30" Click="RestoreButton_Click" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource OpacityButton}" TargetType="Button">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Source={x:Static Application.Current}, Path=MainWindow.WindowState}" Value="Normal">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Canvas Width="12" Height="10">
+                        <Rectangle Canvas.Left="3" Width="8" Height="7" Stroke="White" StrokeThickness="2" />
+                        <Rectangle Canvas.Top="3" Width="8" Height="7" Stroke="White" StrokeThickness="2" />
+                    </Canvas>
+                </Button>
+
+                <Button x:Name="CloseButton" Style="{StaticResource OpacityButton}" Width="20" Height="30" Margin="0,0,8,0" Click="CloseButton_Click" >
+                    <Path Width="10" Height="10" Stroke="White" StrokeThickness="2.2" Stretch="Fill" Data="M0,0 L1,1 M0,1 L1,0" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Border BorderBrush="Silver" BorderThickness="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="20">
+            <TabControl>
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TabItem}">
+                                    <ContentPresenter ContentSource="Header" Margin="0,0,30,0" TextElement.FontSize="25" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="TextElement.Foreground" Value="{StaticResource ToolbarTextBrush}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="TextElement.Foreground" Value="Black" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="{x:Type TabControl}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TabControl}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TabPanel Grid.Row="0" Margin="0,0,4,-1" IsItemsHost="True" Background="Transparent" />
+                                        <ContentPresenter ContentSource="SelectedContent" Grid.Row="1" Margin="0,20,0,0" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="{x:Static resx:MainWindow.Sync}">
+                    <ContentPresenter Content="{Binding Path=CurrentSyncView, Mode=OneWay}">
+                        <ContentPresenter.Resources>
+                            <DataTemplate DataType="{x:Type vm:StartViewModel}">
+                                <ctrl:MetroContentControl>
+                                    <views:Start />
+                                </ctrl:MetroContentControl>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:ScanViewModel}">
+                                <ctrl:MetroContentControl>
+                                    <views:Scan />
+                                </ctrl:MetroContentControl>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:PreviewViewModel}">
+                                <ctrl:MetroContentControl>
+                                    <views:Preview />
+                                </ctrl:MetroContentControl>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:PreviewNoFilesViewModel}">
+                                <ctrl:MetroContentControl>
+                                    <views:PreviewNoFiles />
+                                </ctrl:MetroContentControl>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:SynchronizeViewModel}">
+                                <ctrl:MetroContentControl>
+                                    <views:Synchronize />
+                                </ctrl:MetroContentControl>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:SynchronizeNoFilesViewModel}">
+                                <ctrl:MetroContentControl>
+                                    <views:SynchronizeNoFiles />
+                                </ctrl:MetroContentControl>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:ResultViewModel}">
+                                <ctrl:MetroContentControl>
+                                    <views:Result />
+                                </ctrl:MetroContentControl>
+                            </DataTemplate>
+                        </ContentPresenter.Resources>
+                    </ContentPresenter>
+                </TabItem>
+                <TabItem Header="{x:Static resx:MainWindow.Help}">
+                    <ctrl:MetroContentControl>
+                        <views:Help />
+                    </ctrl:MetroContentControl>
+                </TabItem>
+                <TabItem Header="{x:Static resx:MainWindow.About}">
+                    <ctrl:MetroContentControl>
+                        <views:About />
+                    </ctrl:MetroContentControl>
+                </TabItem>
+            </TabControl>
+        </Border>
+        <Canvas Grid.Row="1" Height="7" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="7">
+            <Thumb x:Name="ResizeThumb" Cursor="SizeNWSE" DragDelta="ResizeThumb_DragDelta" Opacity="0"/>
+            <Line Stroke="Silver" X1="0" Y1="7" X2="7" Y2="0"></Line>
+        </Canvas>
+    </Grid>
+</Window>

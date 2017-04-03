@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="Palmmedia.BackUp.UI.Wpf.Views.Help"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ctrl="clr-namespace:Palmmedia.BackUp.UI.Wpf.Controls" 
+             xmlns:resx="clr-namespace:Palmmedia.BackUp.UI.Wpf.Properties"
+             xmlns:shrdresx="clr-namespace:Palmmedia.BackUp.SharedResources;assembly=Palmmedia.BackUp.SharedResources"
+             mc:Ignorable="d" 
+             d:DesignHeight="1020" d:DesignWidth="780">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Focusable="False" HorizontalAlignment="Stretch" Width="Auto">
+            <RichTextBox BorderThickness="0" IsReadOnly="True" Width="Auto" Height="Auto">
+                <FlowDocument>
+                    <FlowDocument.Blocks>
+                        <BlockUIContainer>
+                            <ctrl:SyncTask />
+                        </BlockUIContainer>
+                        <Paragraph>
+                            <Bold>
+                                <Run Text="{x:Static resx:Help.Active}" />
+                            </Bold>
+                            <LineBreak />
+                            <Run Text="{x:Static resx:Help.ActiveExplanation}" />
+                        </Paragraph>
+
+                        <Paragraph>
+                            <Bold>
+                                <Run Text="{x:Static shrdresx:Common.ReferenceDirectory}" />
+                            </Bold>
+                            <LineBreak />
+                            <Run Text="{x:Static resx:Help.ReferenceDirectoryExplanation}" />
+                        </Paragraph>
+
+                        <Paragraph>
+                            <Bold>
+                                <Run Text="{x:Static shrdresx:Common.TargetDirectory}" />
+                            </Bold>
+                            <LineBreak />
+                            <Run Text="{x:Static resx:Help.TargetDirectoryExplanation}" />
+                        </Paragraph>
+
+                        <Paragraph>
+                            <Bold>
+                                <Run Text="{x:Static shrdresx:Common.Filter}" />
+                            </Bold>
+                            <LineBreak />
+                            <Run Text="{x:Static resx:Help.FilterExplanation}" />
+                        </Paragraph>
+
+                        <Paragraph>
+                            <Bold>
+                                <Run Text="{x:Static resx:Help.SyncMode}" />
+                            </Bold>
+                            <LineBreak />
+                            <Run Text="{x:Static resx:Help.SyncModeExplanation}" />
+                        </Paragraph>
+                        <Table Padding="10" CellSpacing="0">
+                            <Table.Resources>
+                                <Style TargetType="{x:Type TableCell}">
+                                    <Setter Property="Padding">
+                                        <Setter.Value>5</Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderThickness">
+                                        <Setter.Value>1,1,0,0</Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush">
+                                        <Setter.Value>Black</Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Table.Resources>
+                            <Table.RowGroups>
+                                <TableRowGroup Background="{StaticResource EmphasisBrush}">
+                                    <TableRow>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <Bold>
+                                                    <Run Text="{x:Static resx:Help.SyncMode}" />
+                                                </Bold>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <Bold>
+                                                    <Run Text="{x:Static resx:Help.TableHeaderReference}" />
+                                                </Bold>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell BorderThickness="1,1,1,0">
+                                            <Paragraph>
+                                                <Bold>
+                                                    <Run Text="{x:Static resx:Help.TableHeaderTarget}" />
+                                                </Bold>
+                                            </Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableRowGroup>
+                                <TableRowGroup>
+                                    <TableRow>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <Bold>
+                                                    <Run Text="{x:Static shrdresx:Common.SyncModeType_LeftToRight}" />
+                                                </Bold>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <Run Text="{x:Static resx:Help.TableLeftToRightReference}" />
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell BorderThickness="1,1,1,0">
+                                            <Paragraph>
+                                                <Run Text="{x:Static resx:Help.TableLeftToRightTarget}" />
+                                            </Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableRowGroup>
+                                <TableRowGroup>
+                                    <TableRow>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <Bold>
+                                                    <Run Text="{x:Static shrdresx:Common.SyncModeType_LeftToRightWithoutDeletion}" />
+                                                </Bold>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <Run Text="{x:Static resx:Help.TableLeftToRightTarget}" />
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell BorderThickness="1,1,1,0">
+                                            <Paragraph>
+                                                <Run Text="{x:Static resx:Help.TableLeftToRightWithoutDeletionTarget}" />
+                                            </Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableRowGroup>
+                                <TableRowGroup>
+                                    <TableRow>
+                                        <TableCell BorderThickness="1,1,0,1">
+                                            <Paragraph>
+                                                <Bold>
+                                                    <Run Text="{x:Static shrdresx:Common.SyncModeType_BothWays}" />
+                                                </Bold>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell BorderThickness="1,1,0,1">
+                                            <Paragraph>
+                                                <Run Text="{x:Static resx:Help.TableBothWaysReference}" />
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell BorderThickness="1">
+                                            <Paragraph>
+                                                <Run Text="{x:Static resx:Help.TableBothWaysTarget}" />
+                                            </Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableRowGroup>
+                            </Table.RowGroups>
+                        </Table>
+
+                        <Paragraph>
+                            <Bold>
+                                <Run Text="{x:Static resx:Help.Recursive}" />
+                            </Bold>
+                            <LineBreak />
+                            <Run Text="{x:Static resx:Help.RecursiveExplanation}" />
+                        </Paragraph>
+                    </FlowDocument.Blocks>
+                </FlowDocument>
+            </RichTextBox>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
