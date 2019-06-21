@@ -4,7 +4,7 @@
 =                             MetroBackUp                             =
 =                    Sychronization of directories                    =
 =                                                                     =
-=                       http://www.palmmedia.de                       =
+=                       https://www.palmmedia.de                      =
 =                                                                     =
 =                                                                     =
 =======================================================================
