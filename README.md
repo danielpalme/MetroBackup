@@ -13,8 +13,8 @@ Twitter: [@danielpalme](https://twitter.com/danielpalme)
 
 The screenshots show the main window and the preview of the synchronization:
 
-![Screenshot 1](https://www.palmmedia.de/content/opensource/metrobackup/gx/screenshot1.gif)
-![Screenshot 2](https://www.palmmedia.de/content/opensource/metrobackup/gx/screenshot2.gif)
+![Screenshot 1](https://www.palmmedia.de/opensource/metrobackup/images/screenshot1.gif)
+![Screenshot 2](https://www.palmmedia.de/opensource/metrobackup/images/screenshot2.gif)
 
 ## Features
 Features
@@ -24,7 +24,7 @@ Features
   * Synchronization in both directions
 * Synchronization can be constricted to certain file extensions.
 * Command line mode suited for schedule tasks.
-* Language of the programm: (dependant on the current language of the OS): German, English
+* Language of the program: (dependant on the current language of the OS): German, English
 
 ## Resources
 
