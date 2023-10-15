@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Palmmedia")]
 [assembly: AssemblyProduct("MetroBackUp")]
-[assembly: AssemblyCopyright("Copyright © Palmmedia 2011")]
+[assembly: AssemblyCopyright("Copyright © Palmmedia 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,8 +34,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyFileVersion("2.1.0.0")]
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Palmmedia.BackUp.Synchronization.Test")]
 // [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Palmmedia.BackUp.Synchronization.Test, PublicKey=0024000004800000940000000602000000240000525341310004000001000100B91139722596358820A6E216832C62846EE9055F7A275A977A0F7D117930CB51578CC8B9F450AA43435AA4B170C69E0187349FD27BF8548259FFA3C96C39D20356FAF83191BD3CFBAE11F6CB80537572D12432F176AC3E0019FFA3E0E45C7A1E28206AE1B394054C8C930752AB035199573008C283B7E44BFA61EE80DE0971B5")]

@@ -7,11 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="520" d:DesignWidth="780">
     <Grid>
-        <Label FontWeight="Bold" VerticalAlignment="Top" Height="Auto" Content="MetroBackUp © 2011"/>
+        <Label FontWeight="Bold" VerticalAlignment="Top" Height="Auto" Content="MetroBackUp © 2023"/>
         <Label HorizontalAlignment="Left" Margin="0,24,0,0" VerticalAlignment="Top" Width="Auto" Height="Auto" Content="{x:Static resx:About.Homepage}" />
         <Label Margin="90,24,0,0" Height="Auto" VerticalAlignment="Top" MouseLeftButtonUp="HomepageValueLabel_Click" Content="www.palmmedia.de" Cursor="Hand" Foreground="{StaticResource EmphasisBrush}" />
         <Label Width="Auto" Height="Auto" Content="{x:Static resx:About.Version}" HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top"/>
         <Label Width="Auto" Height="Auto" x:Name="versionValueLabel" HorizontalAlignment="Stretch" Margin="90,42,0,0" VerticalAlignment="Top"/>
-        <Image Margin="5,74,0,0" Source="../Resources/Images/Donate.gif" Width="62" Height="31" MouseLeftButtonUp="DonateImage_MouseLeftButtonUp" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

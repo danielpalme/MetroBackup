@@ -162,4 +162,13 @@
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="ExcludedSubdirectoriesExplanation" xml:space="preserve">
+    <value>Alle Unterverzeichnisse werden mit synchronisiert</value>
+  </data>
+  <data name="ExcludedSubdirectoriesDefaultValues" xml:space="preserve">
+    <value>Es werden keine Filter verwendet, alle Unterverzeichnisse werden synchronisiert</value>
+  </data>
+  <data name="DirectoryName" xml:space="preserve">
+    <value>Verzeichnissname</value>
+  </data>
 </root>

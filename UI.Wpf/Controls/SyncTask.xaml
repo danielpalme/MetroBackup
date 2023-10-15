@@ -9,7 +9,7 @@
              xmlns:data="clr-namespace:Palmmedia.BackUp.Synchronization.SyncModes;assembly=Palmmedia.BackUp.Synchronization" 
              xmlns:resx="clr-namespace:Palmmedia.BackUp.UI.Wpf.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="240" d:DesignWidth="400">
+             d:DesignHeight="275" d:DesignWidth="400">
     <UserControl.Resources>
         <ObjectDataProvider x:Key="SyncModeTypeDataSource" d:IsDataSource="True" MethodName="GetLocalizedEnumNames" ObjectType="{x:Type res:EnumLocalizer}">
             <ObjectDataProvider.MethodParameters>
@@ -31,10 +31,11 @@
             <Path Data="{StaticResource DotDotDotPathData}" />
         </Button>
         <ctrl:InitialTextBox Margin="0,105,0,0" Text="{Binding Path=Filter, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="20" InitialText="{x:Static shrdresx:Common.Filter}" ToolTip="{x:Static resx:Help.FilterExplanation}" />
-        <ComboBox IsSynchronizedWithCurrentItem="True" Margin="0,140,0,0" MaxDropDownHeight="50" VerticalAlignment="Top" SelectedIndex="{Binding Path=SyncModeType, Converter={StaticResource SyncModeTypeToIntegerConverter}}" ItemsSource="{Binding Mode=OneTime, Source={StaticResource SyncModeTypeDataSource}}" ToolTip="{x:Static resx:SyncTask.SyncModeTooltip}" />
-        <CheckBox Margin="0,175,30,0" Content="{x:Static resx:SyncTask.Recursive}" VerticalAlignment="Top" Height="Auto" IsChecked="{Binding Path=Recursive}" ToolTip="{x:Static resx:Help.RecursiveExplanation}"/>
-        <Label Margin="0,195,30,0" Foreground="{StaticResource ErrorBrush}" VerticalAlignment="Top" Content="{Binding Path=Status, Mode=OneWay}" Height="Auto"/>
-        <Button Margin="0,202,5,0" Style="{StaticResource DeleteButton}" HorizontalAlignment="Right" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.RemoveJobCommand, Mode=OneWay}" CommandParameter="{Binding Path=.}" ToolTip="{x:Static resx:Common.Delete}" />
-        <Separator Margin="0,225,0,5" Foreground="{StaticResource BorderBrush}" VerticalAlignment="Top"/>
+        <ctrl:InitialTextBox Margin="0,140,0,0" Text="{Binding Path=ExcludedSubdirectories, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="20" InitialText="{x:Static shrdresx:Common.ExcludedSubdirectories}" ToolTip="{x:Static resx:Help.ExcludedSubdirectoriesExplanation}" />
+        <ComboBox IsSynchronizedWithCurrentItem="True" Margin="0,175,0,0" MaxDropDownHeight="50" VerticalAlignment="Top" SelectedIndex="{Binding Path=SyncModeType, Converter={StaticResource SyncModeTypeToIntegerConverter}}" ItemsSource="{Binding Mode=OneTime, Source={StaticResource SyncModeTypeDataSource}}" ToolTip="{x:Static resx:SyncTask.SyncModeTooltip}" />
+        <CheckBox Margin="0,210,30,0" Content="{x:Static resx:SyncTask.Recursive}" VerticalAlignment="Top" Height="Auto" IsChecked="{Binding Path=Recursive}" ToolTip="{x:Static resx:Help.RecursiveExplanation}"/>
+        <Label Margin="0,230,30,0" Foreground="{StaticResource ErrorBrush}" VerticalAlignment="Top" Content="{Binding Path=Status, Mode=OneWay}" Height="Auto"/>
+        <Button Margin="0,237,5,0" Style="{StaticResource DeleteButton}" HorizontalAlignment="Right" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.RemoveJobCommand, Mode=OneWay}" CommandParameter="{Binding Path=.}" ToolTip="{x:Static resx:Common.Delete}" />
+        <Separator Margin="0,260,0,5" Foreground="{StaticResource BorderBrush}" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

@@ -1,0 +1,8 @@
+/.vs
+/TestResults
+*.suo
+*.user
+*.Cache
+*.binlog
+bin
+obj

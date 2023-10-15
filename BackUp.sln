@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC7DFC4A-FDE1-4A6E-8B02-17199411B07C}"
 	ProjectSection(SolutionItems) = preProject
 		BackUp.vsmdi = BackUp.vsmdi
@@ -20,9 +22,6 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{970AA011-DABE-4EBB-9156-09F04D31719E}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = BackUp.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -62,8 +61,12 @@ Global
 		{3E1E6CC9-1945-4D22-9D15-8BE7E24BAFE9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E1E6CC9-1945-4D22-9D15-8BE7E24BAFE9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3E1E6CC9-1945-4D22-9D15-8BE7E24BAFE9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9D5C5800-FE77-4CF0-8C97-D012B859864D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D5C5800-FE77-4CF0-8C97-D012B859864D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D5C5800-FE77-4CF0-8C97-D012B859864D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{9D5C5800-FE77-4CF0-8C97-D012B859864D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9D5C5800-FE77-4CF0-8C97-D012B859864D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D5C5800-FE77-4CF0-8C97-D012B859864D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D5C5800-FE77-4CF0-8C97-D012B859864D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9D5C5800-FE77-4CF0-8C97-D012B859864D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{970AA011-DABE-4EBB-9156-09F04D31719E}.Debug|Any CPU.ActiveCfg = Debug
@@ -74,5 +77,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4052A422-7AB0-45AE-9CB1-00BBABFF361F}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = BackUp.vsmdi
 	EndGlobalSection
 EndGlobal

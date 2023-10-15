@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Palmmedia.BackUp.Synchronization.FileSearch
@@ -35,12 +36,13 @@ namespace Palmmedia.BackUp.Synchronization.FileSearch
         /// <param name="path">The path to search in.</param>
         /// <param name="filepattern">The pattern that the filename has to match.</param>
         /// <param name="dirpattern">The pattern that the name of the directory has to match.</param>
+        /// <param name="excludedSubDirectories">The excluded sub directories.</param>
         /// <param name="recurse">Specifies whether the search should work recursivly.</param>
         /// <returns>True if the search has not been canceled.</returns>
-        public bool Search(string path, string filepattern, string dirpattern, bool recurse)
+        public bool Search(string path, string filepattern, string dirpattern, string[] excludedSubDirectories, bool recurse)
         {
             this.canceled = false;
-            return this.SearchDir(path, filepattern, dirpattern, recurse);
+            return this.SearchDir(path, filepattern, dirpattern, excludedSubDirectories, recurse);
         }
 
         /// <summary>
@@ -93,9 +95,10 @@ namespace Palmmedia.BackUp.Synchronization.FileSearch
         /// <param name="path">The path to search in.</param>
         /// <param name="filepattern">The pattern that the filename has to match.</param>
         /// <param name="dirpattern">The pattern that the name of the directory has to match.</param>
+        /// <param name="excludedSubDirectories">The excluded sub directories.</param>
         /// <param name="recurse">Specifies whether the search should work recursivly.</param>
         /// <returns><c>true</c> if the search has not been canceled.</returns>
-        private bool SearchDir(string path, string filepattern, string dirpattern, bool recurse)
+        private bool SearchDir(string path, string filepattern, string dirpattern, string[] excludedSubDirectories, bool recurse)
         {
             string[] files;
             string[] directories;
@@ -128,13 +131,23 @@ namespace Palmmedia.BackUp.Synchronization.FileSearch
                     return false;
                 }
 
+                if (excludedSubDirectories.Length > 0)
+                {
+                    string directoryName = new DirectoryInfo(directory).Name;
+
+                    if (excludedSubDirectories.Any(d => directoryName.Equals(d, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        continue;
+                    }
+                }
+
                 if (recurse)
                 {
                     // only search directories that are not a Reparse Point to avoid loops
                     if ((File.GetAttributes(directory) & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint)
                     {
                         this.OnDirectoryChanged(directory);
-                        this.SearchDir(directory, filepattern, dirpattern, recurse);
+                        this.SearchDir(directory, filepattern, dirpattern, excludedSubDirectories, recurse);
                     }
                 }
 

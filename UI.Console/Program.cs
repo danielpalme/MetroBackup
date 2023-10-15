@@ -29,7 +29,7 @@ namespace Palmmedia.BackUp.UI.Console
                 ShowHelp();
                 return 0;
             }
-            else if (args.Length > 2 && args.Length < 6)
+            else if (args.Length > 2 && args.Length < 7)
             {
                 SyncTask syncTask = new SyncTask("Console");
 
@@ -54,6 +54,16 @@ namespace Palmmedia.BackUp.UI.Console
                     if (args[i].StartsWith("/FILTER:", StringComparison.OrdinalIgnoreCase))
                     {
                         syncTask.Filter = args[i].Substring(8);
+                        break;
+                    }
+                }
+
+                // Excluded sub directories
+                for (int i = 3; i < args.Length; i++)
+                {
+                    if (args[i].StartsWith("/EXCLUDEDSUBDIRECTORIES:", StringComparison.OrdinalIgnoreCase))
+                    {
+                        syncTask.ExcludedSubdirectories = args[i].Substring(24);
                         break;
                     }
                 }
@@ -114,7 +124,8 @@ namespace Palmmedia.BackUp.UI.Console
                                   + " \"" + Common.ReferenceDirectory
                                   + "\" \"" + Common.TargetDirectory
                                   + "\" [/NORECURSION]"
-                                  + " [/FILTER:" + Resources.Extension + "[," + Resources.Extension + "]*]");
+                                  + " [/FILTER:" + Resources.Extension + "[," + Resources.Extension + "]*]"
+                                  + " [/EXCLUDEDSUBDIRECTORIES:" + Resources.DirectoryName + "[," + Resources.DirectoryName + "]*]");
             System.Console.WriteLine();
             System.Console.WriteLine(Resources.Explanation + ":");
             System.Console.WriteLine("   LTR, LEFTTORIGHT: " + Common.SyncModeType_LeftToRight);
@@ -122,15 +133,17 @@ namespace Palmmedia.BackUp.UI.Console
             System.Console.WriteLine("   BW, BOTHWAYS: " + Common.SyncModeType_BothWays);
             System.Console.WriteLine("   NORECURSION: " + Resources.RecursiveExplanation);
             System.Console.WriteLine("   FILTER: " + Resources.FilterExplanation);
+            System.Console.WriteLine("   EXCLUDEDSUBDIRECTORIES: " + Resources.ExcludedSubdirectoriesExplanation);
             System.Console.WriteLine();
             System.Console.WriteLine(Resources.DefaultValues + ":");
             System.Console.WriteLine("   NORECURSION: " + Resources.RecursiveDefaultValues);
             System.Console.WriteLine("   FILTER: " + Resources.FilterDefaultValues);
+            System.Console.WriteLine("   EXCLUDEDSUBDIRECTORIES: " + Resources.ExcludedSubdirectoriesDefaultValues);
             System.Console.WriteLine();
             System.Console.WriteLine(Resources.Examples + ":");
             System.Console.WriteLine("   LEFTTORIGHT \"C:\\\" \"D:\\\"");
             System.Console.WriteLine("   BOTHWAYS \"C:\\\" \"D:\\\" /NORECURSION");
-            System.Console.WriteLine("   BOTHWAYS \"C:\\\" \"D:\\\" /FILTER:xml,exe,dll");
+            System.Console.WriteLine("   BOTHWAYS \"C:\\\" \"D:\\\" /FILTER:xml,exe,dll /EXCLUDEDSUBDIRECTORIES:node_modules");
         }
     }
 }

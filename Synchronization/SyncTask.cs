@@ -49,6 +49,7 @@ namespace Palmmedia.BackUp.Synchronization
             this.Recursive = true;
             this.Name = name;
             this.Filter = string.Empty;
+            this.ExcludedSubdirectories = string.Empty;
         }
 
         /// <summary>
@@ -124,6 +125,12 @@ namespace Palmmedia.BackUp.Synchronization
         /// </summary>
         /// <value>The filter.</value>
         public string Filter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the excluded subdirectories.
+        /// </summary>
+        /// <value>The excluded subdirectories.</value>
+        public string ExcludedSubdirectories { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether synchronization should be performed in subdirectories.
@@ -212,6 +219,7 @@ namespace Palmmedia.BackUp.Synchronization
                 this.ReferenceDirectory,
                 this.TargetDirectory,
                 this.Filter,
+                this.ExcludedSubdirectories,
                 this.SyncMode.ToString(),
                 this.Recursive);
         }
@@ -337,7 +345,11 @@ namespace Palmmedia.BackUp.Synchronization
             {
                 StringBuilder sb = new StringBuilder("\\.(");
 
-                string[] filters = this.Filter.Replace(" ", string.Empty).Replace(".", string.Empty).Replace("*", string.Empty).Split(',');
+                string[] filters = this.Filter
+                    .Replace(" ", string.Empty)
+                    .Replace(".", string.Empty)
+                    .Replace("*", string.Empty)
+                    .Split(',');
 
                 for (int i = 0; i < filters.Length; i++)
                 {
@@ -351,6 +363,26 @@ namespace Palmmedia.BackUp.Synchronization
                 sb.Append(")$");
 
                 return sb.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Determines the excluded subdirectories.
+        /// </summary>
+        /// <returns>The excluded subdirectories.</returns>
+        internal string[] GetExcludedSubdirectories()
+        {
+            if (string.IsNullOrEmpty(this.ExcludedSubdirectories))
+            {
+                return new string[0];
+            }
+            else
+            {
+                return this.ExcludedSubdirectories
+                    .Replace(" ", string.Empty)
+                    .Replace(".", string.Empty)
+                    .Replace("*", string.Empty)
+                    .Split(',');
             }
         }
 

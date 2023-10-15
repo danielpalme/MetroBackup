@@ -24,6 +24,7 @@ namespace Palmmedia.BackUp.UI.Wpf.Views
                 TargetDirectory = "D:\\",
                 Recursive = true,
                 Filter = "xml,exe,dll",
+                ExcludedSubdirectories = "node_modules",
                 LastSyncDate = DateTime.Now
             };
 

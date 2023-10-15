@@ -165,4 +165,7 @@
   <data name="TargetDirectoryExplanation" xml:space="preserve">
     <value>Das Verzeichnis, das als Ziel dient. Existiert das Verzeichnis nicht, so wird es erstellt.</value>
   </data>
+  <data name="ExcludedSubdirectoriesExplanation" xml:space="preserve">
+    <value>Verzeichnisse werden dabei mit ',' getrennt angegeben</value>
+  </data>
 </root>

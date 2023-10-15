@@ -165,4 +165,7 @@
   <data name="TargetDirectoryExplanation" xml:space="preserve">
     <value>Determinates the folder that will be used as target. In case the directory does not exist, it will be created.</value>
   </data>
+  <data name="ExcludedSubdirectoriesExplanation" xml:space="preserve">
+    <value>Directories are separated by ','</value>
+  </data>
 </root>

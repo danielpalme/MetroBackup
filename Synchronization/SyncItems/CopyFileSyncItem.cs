@@ -56,7 +56,24 @@ namespace Palmmedia.BackUp.Synchronization.SyncItems
             }
             catch (UnauthorizedAccessException)
             {
-                return Resources.ExceptionUnauthorizedAccess;
+                try
+                {
+                    FileAttributes attributes = File.GetAttributes(this.TargetPath);
+                    if ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                    {
+                        attributes &= ~FileAttributes.ReadOnly;
+                        File.SetAttributes(this.TargetPath, attributes);
+                    }
+
+                    File.Delete(this.TargetPath);
+                    File.Copy(this.ReferencePath, this.TargetPath, true);
+
+                    return null;
+                }
+                catch (Exception)
+                {
+                    return Resources.ExceptionUnauthorizedAccess;
+                }
             }
             catch (DirectoryNotFoundException)
             {

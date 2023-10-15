@@ -23,17 +23,7 @@ namespace Palmmedia.BackUp.UI.Wpf.Views
         /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void HomepageValueLabel_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.palmmedia.de");
-        }
-
-        /// <summary>
-        /// Handles the MouseLeftButtonUp event of the donateImage control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
-        private void DonateImage_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://www.palmmedia.de/Donate");
+            System.Diagnostics.Process.Start("https://www.palmmedia.de");
         }
     }
 }

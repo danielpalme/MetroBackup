@@ -42,6 +42,7 @@ namespace Palmmedia.BackUp.UI.Console
             System.Console.WriteLine("   " + Common.TargetDirectory + ": " + syncTask.TargetDirectory);
             System.Console.WriteLine("   " + Resources.Recursion + ": " + (syncTask.Recursive ? Resources.Yes : Resources.No));
             System.Console.WriteLine("   " + Common.Filter + ": " + syncTask.Filter);
+            System.Console.WriteLine("   " + Common.ExcludedSubdirectories + ": " + syncTask.ExcludedSubdirectories);
             System.Console.WriteLine();
 
             Synchronizer synchronizer = new Synchronizer(new FileLogger());

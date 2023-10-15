@@ -153,4 +153,7 @@
   <data name="TargetDirectory" xml:space="preserve">
     <value>Zielverzeichnis</value>
   </data>
+  <data name="ExcludedSubdirectories" xml:space="preserve">
+    <value>Ausgenommene Unterverzeichnisse</value>
+  </data>
 </root>

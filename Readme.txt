@@ -40,6 +40,10 @@ For further details take a look at LICENSE.txt.
 
 CHANGELOG
 
+2.1.0.0
+
+    * New: Added option to exclude subdirectories
+
 2.0.0.0
 
     * New: Rewrote code from scratch

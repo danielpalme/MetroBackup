@@ -166,7 +166,7 @@
     <value>Deleted file</value>
   </data>
   <data name="LoggerSyncTask" xml:space="preserve">
-    <value>Job '{0}': Reference Directory: {1}, Target Directory: {2}, Filter: {3}, SyncMode: {4}, Include subdirectories: {5}</value>
+    <value>Job '{0}': Reference Directory: {1}, Target Directory: {2}, Filter: {3}, Excluded subdirectories: {4}, SyncMode: {5}, Include subdirectories: {6}</value>
   </data>
   <data name="SyncStatusCopyingFiles" xml:space="preserve">
     <value>Copying files</value>

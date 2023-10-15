@@ -47,7 +47,15 @@
                             <LineBreak />
                             <Run Text="{x:Static resx:Help.FilterExplanation}" />
                         </Paragraph>
-
+                        
+                        <Paragraph>
+                            <Bold>
+                                <Run Text="{x:Static shrdresx:Common.ExcludedSubdirectories}" />
+                            </Bold>
+                            <LineBreak />
+                            <Run Text="{x:Static resx:Help.ExcludedSubdirectoriesExplanation}" />
+                        </Paragraph>
+                        
                         <Paragraph>
                             <Bold>
                                 <Run Text="{x:Static resx:Help.SyncMode}" />

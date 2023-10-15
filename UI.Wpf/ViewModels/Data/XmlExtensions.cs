@@ -27,11 +27,12 @@ namespace Palmmedia.BackUp.UI.Wpf.ViewModels.Data
                         TargetDirectory = st.Attribute("TargetDirectory").Value,
                         Recursive = (bool)st.Attribute("Recursive"),
                         Filter = st.Attribute("Filter").Value,
+                        ExcludedSubdirectories = st.Attribute("ExcludedSubdirectories")?.Value ?? string.Empty,
                         LastSyncDate = ((DateTime)st.Attribute("LastSynced")).Equals(new DateTime()) ? (DateTime?)null : (DateTime)st.Attribute("LastSynced")
                     })
-                    {
-                        SyncModeType = (SyncModeType)Enum.Parse(typeof(SyncModeType), st.Attribute("SyncMode").Value)
-                    }),
+                 {
+                     SyncModeType = (SyncModeType)Enum.Parse(typeof(SyncModeType), st.Attribute("SyncMode").Value)
+                 }),
                 t.Attribute("Name").Value)
             {
                 LastSyncDate = ((DateTime)t.Attribute("LastSynced")).Equals(new DateTime()) ? (DateTime?)null : (DateTime)t.Attribute("LastSynced")
@@ -91,6 +92,7 @@ namespace Palmmedia.BackUp.UI.Wpf.ViewModels.Data
                 new XAttribute("TargetDirectory", syncTask.TargetDirectory),
                 new XAttribute("Recursive", syncTask.Recursive),
                 new XAttribute("Filter", syncTask.Filter),
+                new XAttribute("ExcludedSubdirectories", syncTask.ExcludedSubdirectories),
                 new XAttribute("LastSynced", syncTask.LastSyncDate ?? new DateTime()));
         }
     }

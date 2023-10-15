@@ -183,6 +183,25 @@ namespace Palmmedia.BackUp.UI.Wpf.ViewModels.Data
             }
         }
 
+
+        /// <summary>
+        /// Gets or sets the excluded subdirectories.
+        /// </summary>
+        /// <value>The excluded subdirectories.</value>
+        public string ExcludedSubdirectories
+        {
+            get
+            {
+                return this.syncTask.ExcludedSubdirectories;
+            }
+
+            set
+            {
+                this.syncTask.ExcludedSubdirectories = value;
+                this.OnPropertyChanged("ExcludedSubdirectories");
+            }
+        }
+
         /// <summary>
         /// Gets or sets a value indicating whether synchronization should be performed in subdirectories.
         /// </summary>

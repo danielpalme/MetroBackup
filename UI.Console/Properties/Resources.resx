@@ -148,10 +148,10 @@
     <value>Include subdirectories</value>
   </data>
   <data name="RecursiveDefaultValues" xml:space="preserve">
-    <value>Subdirectories will be included in synchronization.</value>
+    <value>Subdirectories will be included in synchronization</value>
   </data>
   <data name="RecursiveExplanation" xml:space="preserve">
-    <value>Subdirectories will not be included in synchronization.</value>
+    <value>Subdirectories will not be included in synchronization</value>
   </data>
   <data name="SyncMode" xml:space="preserve">
     <value>Mode</value>
@@ -161,5 +161,14 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="ExcludedSubdirectoriesExplanation" xml:space="preserve">
+    <value>All sub directories will be synchronized</value>
+  </data>
+  <data name="ExcludedSubdirectoriesDefaultValues" xml:space="preserve">
+    <value>There are no filters applied, all sub directories will be synchronized</value>
+  </data>
+  <data name="DirectoryName" xml:space="preserve">
+    <value>Directory name</value>
   </data>
 </root>

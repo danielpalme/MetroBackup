@@ -166,7 +166,7 @@
     <value>Datei gelöscht</value>
   </data>
   <data name="LoggerSyncTask" xml:space="preserve">
-    <value>Job '{0}': Referenzverzeichnis: {1}, Zielverzeichnis: {2}, Filter: {3}, Modus: {4}, Unterverzeichnisse einbeziehen: {5}</value>
+    <value>Job '{0}': Referenzverzeichnis: {1}, Zielverzeichnis: {2}, Filter: {3}, Ausgeschlossene Unterverzeichnisse: {4}, Modus: {5}, Unterverzeichnisse einbeziehen: {6}</value>
   </data>
   <data name="SyncStatusCopyingFiles" xml:space="preserve">
     <value>Kopiere Dateien</value>

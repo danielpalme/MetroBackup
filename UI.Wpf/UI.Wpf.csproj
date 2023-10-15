@@ -450,9 +450,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\Images\Donate.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SharedResources\SharedResources.csproj">
       <Project>{9D5C5800-FE77-4CF0-8C97-D012B859864D}</Project>
       <Name>SharedResources</Name>

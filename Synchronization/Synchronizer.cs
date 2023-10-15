@@ -93,6 +93,7 @@ namespace Palmmedia.BackUp.Synchronization
 
                 syncTask.Status = Resources.SyncStatusScanningDirectories;
                 string filterRegex = syncTask.BuildFilterRegex();
+                string[] excludedSubdirectories = syncTask.GetExcludedSubdirectories();
 
                 // Search reference directory
                 Action<string> fileFoundOnReferenceDirectoryHandler = file => FileFoundOnReferenceDirectory(file, syncTask, syncPreview);
@@ -102,7 +103,7 @@ namespace Palmmedia.BackUp.Synchronization
                 this.fileSearch.DirectoryFound += directoryFoundOnReferenceDirectoryHandler;
                 this.fileSearch.DirectoryChanged += this.OnDirectoryChanged;
 
-                this.fileSearch.Search(syncTask.ReferenceDirectory, filterRegex, string.Empty, syncTask.Recursive);
+                this.fileSearch.Search(syncTask.ReferenceDirectory, filterRegex, string.Empty, excludedSubdirectories, syncTask.Recursive);
 
                 this.fileSearch.FileFound -= fileFoundOnReferenceDirectoryHandler;
                 this.fileSearch.DirectoryFound -= directoryFoundOnReferenceDirectoryHandler;
@@ -114,7 +115,7 @@ namespace Palmmedia.BackUp.Synchronization
                 this.fileSearch.FileFound += fileFoundOnTargetDirectoryHandler;
                 this.fileSearch.DirectoryFound += directoryFoundOnTargetDirectoryHandler;
 
-                this.fileSearch.Search(syncTask.TargetDirectory, filterRegex, string.Empty, syncTask.Recursive);
+                this.fileSearch.Search(syncTask.TargetDirectory, filterRegex, string.Empty, excludedSubdirectories, syncTask.Recursive);
 
                 this.fileSearch.FileFound -= fileFoundOnTargetDirectoryHandler;
                 this.fileSearch.DirectoryFound -= directoryFoundOnTargetDirectoryHandler;
